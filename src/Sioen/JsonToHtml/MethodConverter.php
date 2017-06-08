@@ -6,7 +6,8 @@ final class MethodConverter implements Converter
 {
     public function toHtml(array $data)
     {
-        $html = '<p itemprop="recipeInstructions"><strong>How to Mix</strong></p>';
+        // the <strong>..</strong> element gets replaced by DrinksController.php (e.g. see the JW.com repo)
+        $html = '<p itemprop="recipeInstructions"><strong>Method</strong></p>';
         $html .= '<ul>';
         foreach ($data['listItems'] as $listItem) {
             $html .= '<li>'.$listItem['content'].'</li>';
