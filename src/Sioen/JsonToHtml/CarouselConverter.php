@@ -18,7 +18,7 @@ final class CarouselConverter implements Converter
             if(isset($data["description"])) {
                 $html .=     '<p class="carousel-description">'.$data["description"].'</p>';
             }
-            $html .= '<div class="carousel-items col-xs-12">';
+            $html .= '<div class="carousel-items col-xs-12" id="carousel-items-'.$data["id"].'">';
 
             foreach ($data["items"] as $key => $value) {
                 $html .= '  <div class="carousel-item">';
@@ -65,7 +65,7 @@ final class CarouselConverter implements Converter
                               ]
                             }
 
-                            $(\'.carousel-items\').slick(params);
+                            $(\'#carousel-items-'.$data["id"].'\').slick(params);
                           });
                       </script>';
         }
