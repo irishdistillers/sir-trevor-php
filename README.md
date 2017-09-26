@@ -1,3 +1,8 @@
+WARNING
+=======
+
+THIS REPO IS DEPRECATED. DO NOT USE.
+
 A Sir Trevor JSON to HTML Converter
 ===================================
 
