@@ -21,6 +21,15 @@ final class CarouselConverter implements Converter
             $html .= '<div class="carousel-items col-xs-12" id="carousel-items-'.$data["id"].'">';
 
             foreach ($data["items"] as $key => $value) {
+              if (preg_match('/\[\[([^\]]+)\]\]/', $value["title"], $matches)) {  
+                $html .= '  <a class="carousel-item" href="'.$matches[1].'">';
+                $html .= '      <img src="'.$value["image"].'" class="img-responsive carousel-image">';
+                if(isset($value["body"])) {
+                    $html .=    '<p class="carousel-body">'.$value["body"].'</p>';
+                }
+                $html .= '      <hr class="carousel-separator"/>';
+                $html .= '  </a>';
+              } else {
                 $html .= '  <div class="carousel-item">';
                 $html .= '      <img src="'.$value["image"].'" alt="'.$value["title"].'" class="img-responsive carousel-image">';
                 if(isset($value["body"])) {
@@ -28,6 +37,7 @@ final class CarouselConverter implements Converter
                 }
                 $html .= '      <hr class="carousel-separator"/>';
                 $html .= '  </div>';
+              }
             }
             $html .= '</div></div>';
             $html .= '<script type="text/javascript">
